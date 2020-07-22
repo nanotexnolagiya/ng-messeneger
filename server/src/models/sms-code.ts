@@ -2,7 +2,7 @@ import { Schema, model, Types, Document } from "mongoose";
 
 export interface ISmsCode extends Document{
   email: string
-  code: string
+  code: number
   expiredAt: Date
   isChecked?: boolean
 }
@@ -13,7 +13,7 @@ const smsCodeSchema = new Schema({
     required: true,
   },
   code: {
-    type: String,
+    type: Number,
     required: true,
   },
   expiredAt: {

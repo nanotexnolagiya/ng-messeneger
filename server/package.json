@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon src/index.ts",
-    "compile": "rm -rf dist && tsc -outDir dist",
+    "compile": "tsc -outDir dist",
     "prod": "cross-env NODE_ENV=production npm run compile && node dist/index.js",
     "doc": "apidoc -i ./src -o ./documentation"
   },
