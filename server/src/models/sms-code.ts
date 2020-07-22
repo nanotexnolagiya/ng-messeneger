@@ -4,7 +4,7 @@ export interface ISmsCode extends Document{
   email: string
   code: string
   expiredAt: Date
-  isChecked: boolean
+  isChecked?: boolean
 }
 
 const smsCodeSchema = new Schema({

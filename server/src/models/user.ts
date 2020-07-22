@@ -2,10 +2,10 @@ import { Schema, model, Types, Document, PaginateModel } from "mongoose";
 import * as mongoosePaginate from 'mongoose-paginate-v2';
 
 export interface IUser extends Document{
-  username: string
-  phone: string
+  username?: string
+  phone?: string
   email: string
-  pswdHash: string
+  pswdHash?: string
   profileId: Types.ObjectId
 }
 
