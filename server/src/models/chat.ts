@@ -4,7 +4,7 @@ import { Access, Status } from "./enums";
 export interface IChat extends Document{
   type: string
   status: string
-  deletedAt: Date
+  deletedAt?: Date
 }
 
 const chatSchema = new Schema({
