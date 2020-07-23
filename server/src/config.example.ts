@@ -1,7 +1,7 @@
 const configs = {
     "development": {
       "host": "localhost",
-      "port": "3030",
+      "port": "3040",
       "apiVersion": "v1",
       "publicPath": "public",
       "uploadsPath": "uploads",
