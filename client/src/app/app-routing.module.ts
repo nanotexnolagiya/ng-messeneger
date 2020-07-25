@@ -7,7 +7,6 @@ import { MembersComponent } from './members/members.component';
 import { ListChatComponent } from './list-chat/list-chat.component';
 import { SettingsComponent } from './settings/settings.component';
 
-
 const routes: Routes = [
   { path: '', component: SignInComponent, },
   { path: 'sign-up', component: SignUpComponent},

@@ -8,7 +8,7 @@
           <a routerLink = '/user' data-toggle="tab"><i class="material-icons">account_circle</i></a>
           <a   routerLink = 'list-chat' data-toggle="tab" class="active"><i class="material-icons active">chat_bubble_outline</i></a>
           <a  routerLink = 'settings' data-toggle="tab"><i class="material-icons">settings</i></a>
-          <button class="btn power" routerLink=''><i class="material-icons">power_settings_new</i></button>
+          <button class="btn power" (click)='logOut()'><i class="material-icons">power_settings_new</i></button>
         </div>
       </div>
     </div>
