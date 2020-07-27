@@ -9,6 +9,7 @@ const request = agent(App)
 
 describe('Auth Controller', () => {
   const yourEmail = ''
+  const confirmedCode = ''
   const loginRoute = `/api/${v}/login`
   it(`Should POST ${loginRoute}`, async (done: Done) => {
     try {
