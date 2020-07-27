@@ -1,5 +1,4 @@
-import { Schema, model, Types, Document, PaginateModel } from "mongoose";
-import * as mongoosePaginate from 'mongoose-paginate-v2';
+import { Schema, model, Types, Document, Model } from "mongoose";
 
 export interface IUser extends Document{
   username?: string
@@ -30,9 +29,6 @@ const userSchema = new Schema({
   }
 }, { timestamps: true })
 
-userSchema.plugin(mongoosePaginate)
 
-interface UserModel<T extends Document> extends PaginateModel<T> {}
 
-// @ts-ignore
-export const User: UserModel<IUser> = model<IUser>('user', userSchema)
+export const User: Model<IUser> = model<IUser>('user', userSchema)

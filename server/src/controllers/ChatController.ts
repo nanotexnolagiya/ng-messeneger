@@ -17,7 +17,15 @@ const addUsersToChatSchema = Joi.object({
 })
 
 export class ChatController extends BaseController{
-
+  /**
+   * @api {get} /users/me Get current user chats
+   * @apiName GetUserChats
+   * @apiGroup Chats
+   * @apiPermission user
+   *
+   *
+   * @apiSuccess {String} data Chats list
+   */
   async userChats(req: UserRequest, res: ICustomResponse, next: NextFunction): Promise<void> {
     const memberChats = await Member.find({
       userId: req.user._id
@@ -34,6 +42,14 @@ export class ChatController extends BaseController{
     return res.respondOk(chats)
   }
 
+  /**
+   * @api {post} /users/me Create current user chat
+   * @apiName CreateUserChat
+   * @apiGroup Chats
+   * @apiPermission user
+   *
+   * @apiSuccess {String} data Created chat
+   */
   async createUserChat(req: UserRequest, res: ICustomResponse, next: NextFunction): Promise<void> {
     const chat = await Chat.create({
       status: 'active',
@@ -48,6 +64,17 @@ export class ChatController extends BaseController{
     return res.respondCreated(chat)
   }
 
+  /**
+   * @api {post} /users/me/add-users Add users to current user chat
+   * @apiName AddUsersToCurrentUserChat
+   * @apiGroup Chats
+   * @apiPermission user
+   *
+   * @apiParam {String} chatId Added chat id
+   * @apiParam {Array} users Added users ids list
+   *
+   * @apiSuccess {String} data Added users list
+   */
   async addingUsersToChat(req: UserRequest, res: ICustomResponse, next: NextFunction): Promise<void> {
     const { error, value } = addUsersToChatSchema.validate(req.body)
     if (!error) {

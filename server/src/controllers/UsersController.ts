@@ -7,10 +7,10 @@ import { AuthMiddleware } from "../middlewares/AuthMiddleware";
 
 export class UsersController extends BaseController{
   async show(req: UserRequest, res: ICustomResponse, next: NextFunction) {
-    const page = req.params.page || 1
-    const limits = req.params.limits || 10
-    const users = await User.paginate({
-      page,
+    const page = req.params.limits ? Math.max(0, Number(req.params.page)) : 0
+    const limits = req.params.limits ? Number(req.params.limits) : 20
+    const users = await User.find({
+      offset: limits * page,
       limits
     })
     res.respondOk(users)
