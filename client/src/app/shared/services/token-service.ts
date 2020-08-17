@@ -8,7 +8,7 @@ import { config } from '../config/config';
 })
 export class TokenService {
 
-  refreshToken = null;
+  token = null;
 
   constructor(private http: Http) { }
 

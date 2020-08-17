@@ -21,12 +21,14 @@ export class SignUpComponent implements OnInit {
   }
 
   login(email, code) {
+
       this.authService.checkCode(email, code).subscribe(result => {
+        
         const res = result.json();
-        console.log(result);
+        console.log(result.json());
         if (res.status === 200) {
-          localStorage.setItem('token', res.data.token);
-          this.tokenService.refreshToken = res.data.refreshToken;
+          localStorage.setItem('refreshToken', res.data.refreshToken);
+          this.tokenService.token = res.data.token;
           Swal.fire({
             icon: 'success',
             title: 'Good',
