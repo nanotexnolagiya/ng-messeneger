@@ -22,9 +22,18 @@ export class SignInComponent implements OnInit {
     private authService: AuthService,
     private route: Router,
     private tokenService: TokenService
-  ) { }
+  ) {
+    this.verify();
+   }
 
   ngOnInit() {
+  }
+
+  verify() {
+    let rToken = localStorage.getItem('refreshToken');
+    if (rToken) {
+        this.route.navigate(['user']);
+    }
   }
 
   send(email) {
@@ -67,6 +76,8 @@ export class SignInComponent implements OnInit {
           if (res.status === 200) {
             localStorage.setItem('refreshToken', res.data.refreshToken);
             this.tokenService.token = res.data.token;
+            console.log(this.tokenService.token);
+            
             Swal.fire({
               icon: 'success',
               title: 'Good',

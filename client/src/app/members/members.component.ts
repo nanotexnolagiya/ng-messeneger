@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenService } from '../shared/services/token-service';
+import { ContactService } from '../shared/services/contact-service';
 
 @Component({
   selector: 'app-members',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MembersComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private tokenService: TokenService,
+    private contactService: ContactService
+  ) {
+   }
 
   ngOnInit() {
   }
+
+  
 
 }

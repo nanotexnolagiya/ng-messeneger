@@ -6,7 +6,7 @@
         <div class="nav nav-tab menu">
           <button class="btn"><img class="avatar-xl" src="assets/img/avatars/avatar-male-1.jpg" alt="avatar"></button>
           <a routerLink = '/user' data-toggle="tab"><i class="material-icons">account_circle</i></a>
-          <a   routerLink = 'list-chat' data-toggle="tab" class="active"><i class="material-icons active">chat_bubble_outline</i></a>
+          <a   routerLink = 'list-chat' data-toggle="tab" ><i class="material-icons">chat_bubble_outline</i></a>
           <a  routerLink = 'settings' data-toggle="tab"><i class="material-icons">settings</i></a>
           <button class="btn power" (click)='logOut()'><i class="material-icons">power_settings_new</i></button>
         </div>
@@ -50,44 +50,42 @@
   </div>
   <!-- End of Add Friends -->
   <!-- Start of Create Chat -->
+
   <div class="modal fade" id="startnewchat" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="requests">
         <div class="title">
-          <h1>Start new chat</h1>
+          <h1>Create New Contact</h1>
           <button type="button" class="btn" data-dismiss="modal" aria-label="Close"><i class="material-icons">close</i></button>
         </div>
         <div class="content">
-          <form>
+          <form [formGroup]="createContact" (ngSubmit)="create()">
             <div class="form-group">
-              <label for="participant">Recipient:</label>
-              <input type="text" class="form-control" id="participant" placeholder="Add recipient..." required>
-              <div class="user" id="recipient">
-                <img class="avatar-sm" src="assets/img/avatars/avatar-female-5.jpg" alt="avatar">
-                <h5>Keith Morris</h5>
-                <button class="btn"><i class="material-icons">close</i></button>
-              </div>
+              <label for="participant">Email:</label>
+              <input type="email" formControlName = 'email' class="form-control" id="participant" placeholder="Email..." required>
             </div>
             <div class="form-group">
-              <label for="topic">Topic:</label>
-              <input type="text" class="form-control" id="topic" placeholder="What's the topic?" required>
+              <label for="topic">Phone:</label>
+              <input type="text" formControlName = 'phone' class="form-control" id="topic" placeholder="Phone..." required>
             </div>
             <div class="form-group">
-              <label for="message">Message:</label>
-              <textarea class="text-control" id="message" placeholder="Send your welcome message...">Hmm, are you friendly?</textarea>
+              <label for="topic">FirstName:</label>
+              <input type="text" formControlName = 'firstName' class="form-control" id="topic" placeholder="First Name..." required>
             </div>
-            <button type="submit" class="btn button w-100">Start New Chat</button>
+            <div class="form-group">
+              <label for="topic">LastName:</label>
+              <input type="text" formControlName = 'lastName' class="form-control" id="topic" placeholder="Last Name..." required>
+            </div>
+            <button type="submit" class="btn button w-100">Create New Contact</button>
           </form>
         </div>
       </div>
     </div>
   </div>
   <!-- End of Create Chat -->
-  <div class="main">
+    <div class="main">
     <div class="tab-content" id="nav-tabContent">
-      <!-- Start of Babble -->
       <div class="babble tab-pane fade active show" id="list-chat" role="tabpanel" aria-labelledby="list-chat-list">
-        <!-- Start of Chat -->
         <div class="chat" id="chat1">
           <div class="top">
             <div class="container">
@@ -260,8 +258,6 @@
             </div>
           </div>
         </div>
-        <!-- End of Chat -->
-        <!-- Start of Call -->
         <div class="call" id="call1">
           <div class="content">
             <div class="container">
@@ -286,12 +282,8 @@
             </div>
           </div>
         </div>
-        <!-- End of Call -->
       </div>
-      <!-- End of Babble -->
-      <!-- Start of Babble -->
       <div class="babble tab-pane fade" id="list-empty" role="tabpanel" aria-labelledby="list-empty-list">
-        <!-- Start of Chat -->
         <div class="chat" id="chat2">
           <div class="top">
             <div class="container">
@@ -349,8 +341,6 @@
             </div>
           </div>
         </div>
-        <!-- End of Chat -->
-        <!-- Start of Call -->
         <div class="call" id="call2">
           <div class="content">
             <div class="container">
@@ -375,12 +365,8 @@
             </div>
           </div>
         </div>
-        <!-- End of Call -->
       </div>
-      <!-- End of Babble -->
-      <!-- Start of Babble -->
       <div class="babble tab-pane fade" id="list-request" role="tabpanel" aria-labelledby="list-request-list">
-        <!-- Start of Chat -->
         <div class="chat" id="chat3">
           <div class="top">
             <div class="container">
@@ -442,9 +428,7 @@
             </div>
           </div>
         </div>
-        <!-- End of Chat -->
       </div>
-      <!-- End of Babble -->
     </div>
-  </div>
+  </div>  
 </div> <!-- Layout -->

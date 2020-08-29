@@ -24,7 +24,7 @@
                 <button class="btn icon"><i class="material-icons">mail_outline</i></button>
               </div>
                 <div   class="form-group">
-                <input *ngIf = 'status' type="text" formControlName="password" class="form-control" placeholder="Password" required>
+                <input *ngIf = 'status' type="text" formControlName="password" class="form-control" placeholder="Code" required>
                 <button *ngIf = 'status' class="btn icon"><i class="material-icons">lock_outline</i></button>
               </div>  
               <button *ngIf = '!status && !spinner' type="submit" (click)='send(email.value)'  class="btn button" >Send Message</button>
