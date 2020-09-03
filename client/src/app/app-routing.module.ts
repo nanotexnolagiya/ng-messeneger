@@ -6,6 +6,7 @@ import { UserComponent } from './user/user.component';
 import { MembersComponent } from './members/members.component';
 import { ListChatComponent } from './list-chat/list-chat.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ListContactComponent } from './list-contact/list-contact.component';
 
 const routes: Routes = [
   { path: '', component: SignInComponent, },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'user', component: UserComponent, children: [
     {path: '', component: MembersComponent},
     {path: 'list-chat', component: ListChatComponent},
+    {path: 'list-contact', component: ListContactComponent},
     {path: 'settings', component: SettingsComponent}
   ]}
 ];

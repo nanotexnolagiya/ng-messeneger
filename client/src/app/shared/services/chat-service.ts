@@ -21,4 +21,13 @@ export class ChatService {
 
   }
 
+  getChats( 
+    accessToken
+  ) { 
+      const headers = new Headers();
+      headers.append('Authorization', accessToken);
+      return this.http.get(config.URL + '/api/v1/chats/me', {headers: headers});
+
+  }
+
 }

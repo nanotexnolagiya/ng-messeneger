@@ -13,6 +13,7 @@ import { UserComponent } from './user/user.component';
 import { MembersComponent } from './members/members.component';
 import { ListChatComponent } from './list-chat/list-chat.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ListContactComponent } from './list-contact/list-contact.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SettingsComponent } from './settings/settings.component';
     UserComponent,
     MembersComponent,
     ListChatComponent,
-    SettingsComponent
+    SettingsComponent,
+    ListContactComponent
   ],
   imports: [
     BrowserModule,

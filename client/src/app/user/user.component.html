@@ -7,6 +7,7 @@
           <button class="btn"><img class="avatar-xl" src="assets/img/avatars/avatar-male-1.jpg" alt="avatar"></button>
           <a routerLink = '/user' data-toggle="tab"><i class="material-icons">account_circle</i></a>
           <a   routerLink = 'list-chat' data-toggle="tab" ><i class="material-icons">chat_bubble_outline</i></a>
+          <a   routerLink = 'list-contact' data-toggle="tab" ><i class="material-icons">chat_bubble_outline</i></a>
           <a  routerLink = 'settings' data-toggle="tab"><i class="material-icons">settings</i></a>
           <button class="btn power" (click)='logOut()'><i class="material-icons">power_settings_new</i></button>
         </div>
@@ -16,40 +17,6 @@
   <!-- End of Navigation -->
   <!-- Start of Sidebar -->
   <router-outlet></router-outlet>
-
-
-  <!-- End of Sidebar -->
-  <!-- Start of Add Friends -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="requests">
-        <div class="title">
-          <h1>Add your friends</h1>
-          <button type="button" class="btn" data-dismiss="modal" aria-label="Close"><i class="material-icons">close</i></button>
-        </div>
-        <div class="content">
-          <form>
-            <div class="form-group">
-              <label for="user">Username:</label>
-              <input type="text" class="form-control" id="user" placeholder="Add recipient..." required>
-              <div class="user" id="contact">
-                <img class="avatar-sm" src="assets/img/avatars/avatar-female-5.jpg" alt="avatar">
-                <h5>Keith Morris</h5>
-                <button class="btn"><i class="material-icons">close</i></button>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="welcome">Message:</label>
-              <textarea class="text-control" id="welcome" placeholder="Send your welcome message...">Hi Keith, I'd like to add you as a contact.</textarea>
-            </div>
-            <button type="submit" class="btn button w-100">Send Friend Request</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End of Add Friends -->
-  <!-- Start of Create Chat -->
 
   <div class="modal fade" id="startnewchat" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -83,7 +50,7 @@
     </div>
   </div>
   <!-- End of Create Chat -->
-    <div class="main">
+  <!-- <div class="main">
     <div class="tab-content" id="nav-tabContent">
       <div class="babble tab-pane fade active show" id="list-chat" role="tabpanel" aria-labelledby="list-chat-list">
         <div class="chat" id="chat1">
@@ -430,5 +397,5 @@
         </div>
       </div>
     </div>
-  </div>  
+  </div>   -->
 </div> <!-- Layout -->
