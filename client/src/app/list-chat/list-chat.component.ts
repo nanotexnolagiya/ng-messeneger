@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../shared/services/contact-service';
-import { TokenService } from '../shared/services/token-service';
 import Swal from 'sweetalert2';
 import { ChatService } from '../shared/services/chat-service';
 
@@ -12,45 +11,33 @@ import { ChatService } from '../shared/services/chat-service';
 export class ListChatComponent implements OnInit {
 
 
-  contacts = [];
   chats = [];
   constructor(
-    private contactService: ContactService,
-    private tokenService: TokenService,
     private chatService: ChatService
   ) { 
-    this.getContact();
     this.getChats();
   }
 
   ngOnInit() {
   }
 
-  getContact() {
-    let token = 'Bearer ' + this.tokenService.token;
-      this.contactService.getContacts(token).subscribe( res => {
-            if (res.json().status === 200) {
-                this.contacts = res.json().data;
-            } else {
-              Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: res.json().message
-              });
-            }
-        }, err => {
+  createChat() {
+    this.chatService.create().subscribe( (res : any) => {
+        if (res.status === 201) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Done',
+            text: res.message
+          }); 
+          this.getChats();
+        } else {
           Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: 'Error in server'
-          });
-      })
-  }
+            text: res.message
+          });    
+        } 
 
-  createChat() {
-    let token = 'Bearer ' + this.tokenService.token;
-    this.chatService.create(token).subscribe( res => {
-        console.log(res.json());
     }, err => {
       Swal.fire({
         icon: 'error',
@@ -61,15 +48,14 @@ export class ListChatComponent implements OnInit {
   }
 
   getChats() {
-    let token = 'Bearer ' + this.tokenService.token;
-    this.chatService.getChats(token).subscribe( res => {
-      if (res.json().status === 200) {
-        this.chats = res.json().data;
+    this.chatService.getChats().subscribe( ( res: any) => {
+      if (res.status === 200) {
+        this.chats = res.data;
     } else {
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: res.json().message
+        text: res.message
       });
     }
     }, err => {
@@ -80,5 +66,4 @@ export class ListChatComponent implements OnInit {
       });
     })
   }
-
 }

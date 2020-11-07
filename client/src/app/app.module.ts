@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,6 +14,8 @@ import { MembersComponent } from './members/members.component';
 import { ListChatComponent } from './list-chat/list-chat.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ListContactComponent } from './list-contact/list-contact.component';
+import { Intercept } from './shared/services/intercept-service';
+import { ChatPageComponent } from './chat-page/chat-page.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { ListContactComponent } from './list-contact/list-contact.component';
     MembersComponent,
     ListChatComponent,
     SettingsComponent,
-    ListContactComponent
+    ListContactComponent,
+    ChatPageComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,9 @@ import { ListContactComponent } from './list-contact/list-contact.component';
     ReactiveFormsModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: Intercept, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

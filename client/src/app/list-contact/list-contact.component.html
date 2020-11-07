@@ -1,1 +1,38 @@
-<h1>List Contact works</h1>
+<div class="sidebar" id="sidebar">
+
+    <div class="container">
+      <div class="col-md-12">
+        <div class="tab-content">
+    <div id="discussions" class="tab-pane fade active show">
+      <div class="search">
+        <form class="form-inline position-relative">
+          <input type="search" class="form-control" id="conversations" placeholder="Search for List Chat...">
+          <button type="button" class="btn btn-link loop"><i class="material-icons">search</i></button>
+        </form>
+        <button class="btn create" data-toggle="modal" data-target="#startnewchat"><i class="material-icons">create</i></button>
+      </div>
+      <div class="list-group sort">
+        <button class="btn filterDiscussionsBtn active show" (click) = 'createChat()' data-toggle="list" data-filter="all">Create new Chat</button>
+        
+      </div>
+      <div class="discussions">
+        <h1>Contacts</h1>
+        <div class="list-group" id="chats" role="tablist">
+          <a *ngFor = 'let contact of contacts' class="filterDiscussions all unread single active" id="list-chat-list" data-toggle="list" role="tab">
+            <img class="avatar-md" src="assets/img/avatars/avatar.png" data-toggle="tooltip" data-placement="top" title="Janette" alt="avatar">
+            <div class="status">
+              <i class="material-icons online">fiber_manual_record</i>
+            </div>
+            <div class="data">
+              <h5>{{contact.firstName}} {{contact.lastName}} </h5>
+              <p>{{contact.email}}</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+   

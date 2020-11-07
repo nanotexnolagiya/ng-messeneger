@@ -38,7 +38,13 @@ export class UserComponent implements OnInit {
           this.authService.auth(localStorage.getItem('refreshToken')).subscribe( res => {
             if (res.json().status === 200 ) {
             this.tokenService.token = res.json().data.token;
+            let token = res.json().data.newRefreshToken;
             localStorage.setItem('refreshToken', res.json().data.newRefreshToken );
+            // const socket = socketioJwt.connect('http://localhost:9000', {
+            //   extraHeaders: { Authorization: `Bearer ${token}` }
+            // });
+            // console.log(socket);
+            
             } else {
               Swal.fire({
                 icon: 'error',
@@ -67,27 +73,24 @@ export class UserComponent implements OnInit {
   }
 
   create() { 
-    let accessToken = this.tokenService.token
     this.contactService.create(
       this.createContact.value.email,
       this.createContact.value.phone,
       this.createContact.value.firstName,
-      this.createContact.value.lastName,
-      accessToken
+      this.createContact.value.lastName
     )
-    .subscribe( result => {
-        console.log(result.json());
-        if (result.json().status === 201) {
+    .subscribe( ( result: any)  => {
+        if (result.status === 201) {
           Swal.fire({
             icon: 'success',
             title: 'Done',
-            text: result.json().message
+            text: result.message
           });
         } else {
           Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: result.json().message
+            text: result.message
           });
         }
         

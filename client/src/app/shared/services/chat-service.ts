@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 import { config } from '../config/config';
 
@@ -9,25 +9,15 @@ import { config } from '../config/config';
 export class ChatService {
 
   constructor(
-    private http: Http
+    private http: HttpClient
     ) { }
 
-  create( 
-    accessToken
-  ) { 
-      const headers = new Headers();
-      headers.append('Authorization', accessToken);
-      return this.http.post(config.URL + '/api/v1/chats/me', {headers: headers});
-
+  create() { 
+      return this.http.post(config.URL + '/api/v1/chats/me', null);
   }
 
-  getChats( 
-    accessToken
-  ) { 
-      const headers = new Headers();
-      headers.append('Authorization', accessToken);
-      return this.http.get(config.URL + '/api/v1/chats/me', {headers: headers});
-
+  getChats() { 
+      return this.http.get(config.URL + '/api/v1/chats/me');
   }
 
 }

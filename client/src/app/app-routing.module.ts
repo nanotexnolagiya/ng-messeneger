@@ -7,6 +7,7 @@ import { MembersComponent } from './members/members.component';
 import { ListChatComponent } from './list-chat/list-chat.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ListContactComponent } from './list-contact/list-contact.component';
+import { ChatPageComponent } from './chat-page/chat-page.component';
 
 const routes: Routes = [
   { path: '', component: SignInComponent, },
@@ -15,7 +16,8 @@ const routes: Routes = [
     {path: '', component: MembersComponent},
     {path: 'list-chat', component: ListChatComponent},
     {path: 'list-contact', component: ListContactComponent},
-    {path: 'settings', component: SettingsComponent}
+    {path: 'settings', component: SettingsComponent},
+    {path: 'list-chat/:id', component: ChatPageComponent}
   ]}
 ];
 

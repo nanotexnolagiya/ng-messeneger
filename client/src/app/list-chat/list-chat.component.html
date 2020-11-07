@@ -16,16 +16,16 @@
       
     </div>
     <div class="discussions">
-      <h1>Contacts</h1>
+      <h1>Chats</h1>
       <div class="list-group" id="chats" role="tablist">
-        <a *ngFor = 'let contact of contacts' class="filterDiscussions all unread single active" id="list-chat-list" data-toggle="list" role="tab">
+        <a *ngFor = 'let chat of chats' routerLink ='{{chat._id}}' class="filterDiscussions all unread single active" id="list-chat-list" data-toggle="list" role="tab">
           <img class="avatar-md" src="assets/img/avatars/avatar.png" data-toggle="tooltip" data-placement="top" title="Janette" alt="avatar">
           <div class="status">
             <i class="material-icons online">fiber_manual_record</i>
           </div>
           <div class="data">
-            <h5>{{contact.firstName}} {{contact.lastName}} </h5>
-            <p>{{contact.email}}</p>
+            <h5>{{chat.status}} </h5>
+            <p>{{chat.type}}</p>
           </div>
         </a>
       </div>

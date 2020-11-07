@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
-
+import { HttpClient} from '@angular/common/http';
 import { config } from '../config/config';
 
 @Injectable({
@@ -9,15 +8,14 @@ import { config } from '../config/config';
 export class ContactService {
 
   constructor(
-    private http: Http,
+    private http: HttpClient,
     ) { }
 
   create(
       email,
       phone,
       firstName,
-      lastName,
-      accessToken
+      lastName
   ) {
       const body = {
           email,
@@ -25,18 +23,12 @@ export class ContactService {
           firstName,
           lastName
       }
-      const headers = new Headers();
-      headers.append('Authorization', accessToken);
-      return this.http.post(config.URL + '/api/v1/contacts/me', body, {headers: headers});
+      return this.http.post(config.URL + '/api/v1/contacts/me', body);
 
   }
 
-  getContacts(
-    accessToken
-  ) {
-    const headers = new Headers();
-    headers.append('Authorization', accessToken);
-    return this.http.get(config.URL + '/api/v1/contacts/me', {headers: headers});
+  getContacts() {
+    return this.http.get(config.URL + '/api/v1/contacts/me');
   }
 
 }
